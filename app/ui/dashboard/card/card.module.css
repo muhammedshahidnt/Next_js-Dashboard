@@ -1,0 +1,36 @@
+.container{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--bgSoft);
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-left: 20px;
+}
+.container:hover{
+    background-color: #2e374a;
+}
+.texts{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+}
+.number{
+    font-size: 24px;
+    font-weight: 500;
+}
+.details{
+
+    font-size: 14px;
+    font-weight: 300;
+
+}
+.positive{
+    color: green;
+}
+.icons{
+    display: flex;
+    gap: 20px;
+}
