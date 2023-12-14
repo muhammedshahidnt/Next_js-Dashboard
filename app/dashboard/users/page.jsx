@@ -1,13 +1,22 @@
 import React from 'react'
 import styles from '@/app/ui/dashboard/users/users.module.css'
 import Link from 'next/link'
+import Pagination from '@/app/ui/dashboard/pagination/pagination'
 import Search from '@/app/ui/dashboard/search/search'
-const Userspage = () => {
+import { FetchUsers } from '@/app/lib/data'
+const Userspage = async () => {
+  // const users = await FetchUsers();
+  // console.log('====================================');
+  // console.log(users);
+  // console.log('====================================');
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder='Search for user....' />
-        <button className={styles.addbutton}>Add New</button>
+        <Link href="/dashboard/users/add ">
+          <button className={styles.addbutton}>Add New</button>
+        </Link>
       </div>
       <table className={styles.table}>
         <thead>
@@ -33,7 +42,7 @@ const Userspage = () => {
             <td>
               <div className={styles.buttons}>
 
-                <Link href='/'>
+                <Link href='/dashboard/users/test'>
                   <button className={`${styles.button} ${styles.view}`}>View</button>
                 </Link>
                 <button className={`${styles.button} ${styles.delete}`}>Delete</button>
@@ -42,6 +51,7 @@ const Userspage = () => {
           </tr>
         </tbody>
       </table>
+      <Pagination />
     </div>
   )
 }

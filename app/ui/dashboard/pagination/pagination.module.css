@@ -1,36 +1,13 @@
 .container{
-    padding: 20px;
-    border-radius: 10px;
-    background-color: var(--bgSoft);
+    padding: 10px;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+}
+.button{
+    padding: 5px 10px ;
     cursor: pointer;
-    width: 100%;
-    margin-left: 20px;
 }
-.container:hover{
-    background-color: #2e374a;
-}
-.texts{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
 
-}
-.number{
-    font-size: 24px;
-    font-weight: 500;
-}
-.details{
-
-    font-size: 14px;
-    font-weight: 300;
-
-}
-.positive{
-    color: green;
-}
-.icons{
-    display: flex;
-    gap: 20px;
+.button:disabled{
+    cursor: not-allowed;
 }

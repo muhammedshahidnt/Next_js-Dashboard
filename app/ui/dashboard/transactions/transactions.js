@@ -9,7 +9,6 @@ const Transactions = () => {
       <table className={styles.table}>
         <thead>
           <tr>
-            
             <th className={styles.th}>Name</th>
             <th className={styles.th}>Status</th>
             <th className={styles.th}>Date</th>
@@ -20,9 +19,7 @@ const Transactions = () => {
           <tr>
             <td>
               <div className={styles.user}>
-
                 <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="user" width="50" height="50" className={styles.image} />
-
                 John Doe
               </div>
             </td>
@@ -53,7 +50,6 @@ const Transactions = () => {
           <tr>
             <td>
               <div className={styles.user}>
-
                 <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="user" width="50" height="50" className={styles.image} />
                 John Doe
               </div>
