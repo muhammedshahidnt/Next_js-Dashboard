@@ -15,11 +15,11 @@ const UserSchema = new mongoose.Schema(
             min: 3,
             max: 20,
         },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-        },
+        // email: {
+        //     type: String,
+        //     required: true,
+        //     unique: true,
+        // },
         password: {
             type: String,
             required: true,
@@ -83,5 +83,5 @@ const ProductSchema = new mongoose.Schema(
     {timestamps: true}
 )
 
-export const User = mongoose.models.user || mongoose.model("User", UserSchema)
-export const Product = mongoose.models.product || mongoose.model("Product", ProductSchema)
+export const User = mongoose.models.User || mongoose.model("User", UserSchema)
+export const Product = mongoose.models.Product || mongoose.model("Product", ProductSchema)

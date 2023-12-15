@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/users/singleuser/singleuser.module.css'
+import styles from '../../../ui/dashboard/users/singleuser/singleuser.module.css'
 
 const Singleuser = () => {
   return (

@@ -4,7 +4,7 @@ import connectToDB from "./utils";
 export const FetchUsers = async () => {
     try {
         connectToDB();
-        const users = await User.find().select('name email').limit(10);
+        const users = await User.find();
         return users;
     } catch (err) {
         console.log(err);

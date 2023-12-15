@@ -3,15 +3,18 @@
     margin-left: 20px;
 
 }
+
 .menu {
     flex: 1;
     background-color: var(--bgSoft);
     padding: 20px;
 
 }
+
 .content {
     flex: 4;
 }
+
 .wrapper {
     display: flex;
     gap: 20px;
@@ -19,6 +22,7 @@
 
 
 }
+
 .main {
     flex: 3;
     display: flex;
@@ -26,12 +30,14 @@
     gap: 20px;
 
 }
-.cards{
+
+.cards {
     display: flex;
     gap: 20px;
     justify-content: space-between;
 
 }
+
 .side {
-flex: 1;
+    flex: 1;
 }

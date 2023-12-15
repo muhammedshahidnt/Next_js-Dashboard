@@ -1,12 +1,23 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/users/users.module.css'
+import styles from '../../ui/dashboard/users/users.module.css'
 import Link from 'next/link'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import Search from '@/app/ui/dashboard/search/search'
-import { FetchUsers } from '@/app/lib/data'
+// import Pagination from '@/app/ui/dashboard/pagination/pagination'
+import Pagination from '../../ui/dashboard/pagination/pagination'
+import Search from '../../ui/dashboard/search/search'
+import { FetchUsers } from '../../lib/data'
+
 const Userspage = async () => {
-  // const users = await FetchUsers();
-  // console.log('====================================');
+
+
+  // const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  // const users = await res.json();
+
+  const users = await FetchUsers();
+  console.log('====================================');
+  console.log(users);
+  console.log('=================================');
+
+  // console.log('==============================z======');
   // console.log(users);
   // console.log('====================================');
 
@@ -14,6 +25,10 @@ const Userspage = async () => {
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder='Search for user....' />
+        {/* <div>
+        <Suspense key={query + currentPage} >
+      </Suspense>
+        </div> */}
         <Link href="/dashboard/users/add ">
           <button className={styles.addbutton}>Add New</button>
         </Link>
@@ -30,25 +45,31 @@ const Userspage = async () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><div className={styles.user}>
-              <img className={styles.userimage} src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="user" width="40" height="40" />
-              Shahid
-            </div></td>
-            <td>john@gmail.com</td>
-            <td>10.05.2004</td>
-            <td>Admin</td>
-            <td>Active</td>
-            <td>
-              <div className={styles.buttons}>
+          {users.map((user) => (
+            
 
-                <Link href='/dashboard/users/test'>
-                  <button className={`${styles.button} ${styles.view}`}>View</button>
-                </Link>
-                <button className={`${styles.button} ${styles.delete}`}>Delete</button>
-              </div>
-            </td>
-          </tr>
+            <tr key={user.id}>
+              <td><div className={styles.user}>
+                <img className={styles.userimage} src={user.img} alt="user" width="40" height="40" />
+               {user.username}
+              </div></td>
+        
+              <td>{user.email}</td>
+              <td>{user.createdAt}</td>
+              <td>{user.isAdmin ? "Admin" : "User"}</td>
+              <td>{user.isActive ? "Active" : "Passive"}</td>
+              <td>
+                <div className={styles.buttons}>
+
+                  <Link href={`/dashboard/users/${user.id}`}>
+                    <button className={`${styles.button} ${styles.view}`}>View</button>
+                  </Link>
+                  <button className={`${styles.button} ${styles.delete}`}>Delete</button>
+                </div>
+              </td>
+            </tr>
+    ))}
+    
         </tbody>
       </table>
       <Pagination />
