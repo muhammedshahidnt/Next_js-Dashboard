@@ -5,7 +5,7 @@ export const FetchUsers = async (q, page) => {
   
     const rejex = new RegExp(q, 'i');
 
-    const ITEM_PER_PAGE = 2;
+    const ITEM_PER_PAGE = 5;
     try {
         connectToDB();
         const count = await User.find({ username: { $regex: rejex } }).count();
