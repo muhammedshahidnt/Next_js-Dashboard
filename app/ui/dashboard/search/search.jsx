@@ -13,6 +13,9 @@ const Search = ({ placeholder }) => {
     const handlesearch = useDebouncedCallback((term) => {
         const params = new URLSearchParams(searchParams);
 
+        //  console.log('====================================');
+        //  console.log(params);
+        //  console.log('====================================');
         params.set('page', 1);
 
         if (term) {
