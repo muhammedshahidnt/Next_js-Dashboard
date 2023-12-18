@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/product/singleproduct/singleproduct.module.css'
+import styles from '../../../ui/dashboard/product/singleproduct/singleproduct.module.css'
 
 const Singleproduct = () => {
     return (

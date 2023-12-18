@@ -1,34 +1,24 @@
 import React from 'react'
 import styles from '../../ui/dashboard/users/users.module.css'
 import Link from 'next/link'
-// import Pagination from '@/app/ui/dashboard/pagination/pagination'
 import Pagination from '../../ui/dashboard/pagination/pagination'
 import Search from '../../ui/dashboard/search/search'
 import { FetchUsers } from '../../lib/data'
 
-const Userspage = async () => {
+const Userspage = async ({searchParams}) => {
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+  const {count,users} = await FetchUsers(q, page);
 
-
-  // const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  // const users = await res.json();
-
-  const users = await FetchUsers();
-  console.log('====================================');
-  console.log(users);
-  console.log('=================================');
-
-  // console.log('==============================z======');
-  // console.log(users);
-  // console.log('====================================');
-
+// console.log('====================================');
+// console.log(count);
+// console.log('====================================');
+  
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder='Search for user....' />
-        {/* <div>
-        <Suspense key={query + currentPage} >
-      </Suspense>
-        </div> */}
+   
         <Link href="/dashboard/users/add ">
           <button className={styles.addbutton}>Add New</button>
         </Link>
@@ -46,7 +36,9 @@ const Userspage = async () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            
+            // console.log('====================================');
+            // console.log(user);
+            // console.log('====================================');
 
             <tr key={user.id}>
               <td><div className={styles.user}>
@@ -55,7 +47,7 @@ const Userspage = async () => {
               </div></td>
         
               <td>{user.email}</td>
-              <td>{user.createdAt}</td>
+              <td>{user.createdAt?.toString()}</td>
               <td>{user.isAdmin ? "Admin" : "User"}</td>
               <td>{user.isActive ? "Active" : "Passive"}</td>
               <td>
@@ -72,7 +64,7 @@ const Userspage = async () => {
     
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   )
 }

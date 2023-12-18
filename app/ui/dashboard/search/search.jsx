@@ -1,36 +1,36 @@
 "use client"
 import React from 'react'
 import styles from './search.module.css'
-import { usePathname,useSearchParams, useRouter } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { MdSearch } from "react-icons/md";
-
+import { useDebouncedCallback } from 'use-debounce';
 
 const Search = ({ placeholder }) => {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
 
-    const handlesearch = ( term) => {
+    const handlesearch = useDebouncedCallback((term) => {
         const params = new URLSearchParams(searchParams);
-        if(term){
-            params.set('query',term);
-        }else{
-            params.delete('query')
+
+        params.set('page', 1);
+
+        if (term) {
+            params.set('q', term);
+        } else {
+            params.delete('q')
         }
         replace(`${pathname}?${params.toString()}`);
-
-
-
-        // console.log('====================================');
-        // console.log(params);
-        // console.log('====================================');
-    }
+    }, 300)
 
     return (
         <div className={styles.container}>
             <MdSearch />
-            <input type="text" placeholder={placeholder} className={styles.input} onChange={(e) => {handlesearch(e.target.value)}} 
-            defaultValue={searchParams.get('query')?.toString} />
+            <input type="text"
+                placeholder={placeholder}
+                className={styles.input}
+                onChange={(e) => { handlesearch(e.target.value) }}
+                defaultValue={searchParams.get('query')?.toString} />
 
         </div>
     )

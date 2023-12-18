@@ -1,6 +1,5 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/users/adduser/adduser.module.css'
-
+import styles from '../../../ui/dashboard/users/adduser/adduser.module.css'
 
 const Adduser = () => {
   return (

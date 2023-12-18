@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from '../../../ui/dashboard/users/singleuser/singleuser.module.css'
-
 const Singleuser = () => {
   return (
     <div className={styles.container}>

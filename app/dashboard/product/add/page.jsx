@@ -1,6 +1,5 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/product/addproduct/addproduct.module.css'
-
+import styles from '../../../ui/dashboard/product/addproduct/addproduct.module.css'
 const Addproduct = () => {
   return (
     <div className={styles.container}>

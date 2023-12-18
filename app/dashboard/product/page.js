@@ -1,9 +1,21 @@
 import React from 'react'
-import styles from '@/app/ui/dashboard/users/users.module.css'
-import Search from '@/app/ui/dashboard/search/search'
+import styles from '../../ui/dashboard/users/users.module.css'
+import Search from '../../ui/dashboard/search/search'
+import Pagination from '../../ui/dashboard/pagination/pagination'
+import { FetchProducts } from '../../lib/data'
+
+
+
+// import Pagination from '../../ui/dashboard/pagination/pagination.module.css'
 import Link from 'next/link'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
-const Productpage = () => {
+const Productpage = async ({ searchParams }) => {
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+  const { count, products } = await FetchProducts(q, page);
+
+  console.log('====================================');
+  console.log(products);
+  console.log('====================================');
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -24,16 +36,18 @@ const Productpage = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {products.map(product=>(
+
+            <tr key={product.id}>
             <td><div className={styles.user}>
               <img className={styles.userimage}
                 src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="user" width="40" height="40" />
-              Iphone
+              {product.title}
             </div></td>
-            <td>$999</td>
-            <td>10.05.2004</td>
-            <td>Admin</td>
-            <td>72</td>
+            <td>{product.desc}</td>
+            <td>{product.price}</td>
+            <td></td>
+            <td>{product.stock}</td>
             <td>
               <div className={styles.buttons}>
 
@@ -44,9 +58,10 @@ const Productpage = () => {
               </div>
             </td>
           </tr>
+            ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
 
   )
