@@ -3,6 +3,7 @@ import styles from '../../ui/dashboard/users/users.module.css'
 import Search from '../../ui/dashboard/search/search'
 import Pagination from '../../ui/dashboard/pagination/pagination'
 import { FetchProducts } from '../../lib/data'
+import { deleteProduct } from '../../lib/actions'
 
 
 
@@ -54,7 +55,10 @@ const Productpage = async ({ searchParams }) => {
                 <Link href='/dashboard/product/${product.id}'>
                   <button className={`${styles.button} ${styles.view}`}>View</button>
                 </Link>
+                <form action={deleteProduct}>
+<input type="hidden" name='id' value={product.id} />
                 <button className={`${styles.button} ${styles.delete}`}>Delete</button>
+                </form>
               </div>
             </td>
           </tr>

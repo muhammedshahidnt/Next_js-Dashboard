@@ -16,6 +16,20 @@ export const FetchUsers = async (q, page) => {
         throw new Error(err);
     }
 };
+export const FetchUser = async (id) => {
+    // console.log('====================================');
+    // console.log(id);
+    // console.log('====================================');
+
+    try {
+        connectToDB();
+       const user = await User.findById(id);
+       return user;
+    } catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
+};
 
 
 export const FetchProducts = async (q, page) => {
@@ -33,3 +47,19 @@ export const FetchProducts = async (q, page) => {
         throw new Error(err);
     }
 };
+
+
+export const FetchProduct = async (id) => {
+
+
+    try {
+        connectToDB();
+      const product = await Product.find(id);
+      return product;
+    } catch (err) {
+        console.log(err);
+        throw new Error(err);
+    }
+};
+
+
