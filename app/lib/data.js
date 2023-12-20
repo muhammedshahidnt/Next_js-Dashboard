@@ -2,7 +2,7 @@ import { User, Product } from "./models";
 import connectToDB from "./utils";
 
 export const FetchUsers = async (q, page) => {
-  
+
     const rejex = new RegExp(q, 'i');
 
     const ITEM_PER_PAGE = 5;
@@ -17,14 +17,11 @@ export const FetchUsers = async (q, page) => {
     }
 };
 export const FetchUser = async (id) => {
-    // console.log('====================================');
-    // console.log(id);
-    // console.log('====================================');
 
     try {
         connectToDB();
-       const user = await User.findById(id);
-       return user;
+        const user = await User.findById(id);
+        return user;
     } catch (err) {
         console.log(err);
         throw new Error(err);
@@ -50,15 +47,16 @@ export const FetchProducts = async (q, page) => {
 
 
 export const FetchProduct = async (id) => {
-
-
+    // console.log('====================================');
+    // console.log(id);
+    // console.log('====================================');
     try {
         connectToDB();
-      const product = await Product.find(id);
-      return product;
+        const product = await Product.findById(id);
+        return product;
     } catch (err) {
         console.log(err);
-        throw new Error(err);
+        // throw new Error(err);
     }
 };
 

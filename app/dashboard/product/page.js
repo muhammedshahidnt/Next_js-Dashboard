@@ -14,9 +14,9 @@ const Productpage = async ({ searchParams }) => {
   const page = searchParams?.page || 1;
   const { count, products } = await FetchProducts(q, page);
 
-  console.log('====================================');
-  console.log(products);
-  console.log('====================================');
+  // console.log('====================================');
+  // console.log(products);
+  // console.log('====================================');
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -52,7 +52,7 @@ const Productpage = async ({ searchParams }) => {
             <td>
               <div className={styles.buttons}>
 
-                <Link href='/dashboard/product/${product.id}'>
+                <Link href={`/dashboard/product/${product.id}`}>
                   <button className={`${styles.button} ${styles.view}`}>View</button>
                 </Link>
                 <form action={deleteProduct}>
