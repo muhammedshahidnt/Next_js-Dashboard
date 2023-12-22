@@ -1,7 +1,7 @@
 import { User, Product } from "./models";
 import connectToDB from "./utils";
 
-export const FetchUsers = async (q, page) => {
+export const    FetchUsers = async (q, page) => {
 
     const rejex = new RegExp(q, 'i');
 

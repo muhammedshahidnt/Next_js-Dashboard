@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './sidebar.module.css'
+import { auth, signOut } from '../../../auth'
 import {
     MdDashboard,
     MdOutlineSupervisedUserCircle,
@@ -87,15 +88,19 @@ const menuItems = [
 
 ]
 
-const Sidebar = () => {
+const Sidebar = async () => {
+    const {user} = await auth();
+    console.log('====================================');
+    console.log(user);
+    console.log('====================================');
     return (
         <div className={styles.container}>
             <div className={styles.user}>
 
-                <img className={styles.userimage} src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="user" width="50" height="50" />
+                <img className={styles.userimage} src={user.img ||"https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="} alt="user" width="50" height="50" />
                 <div className={styles.userdetails}>
 
-                    <span className={styles.username}>John Doe</span>
+                    <span className={styles.username}>{user.username}</span>
                     <span className={styles.usertitle}>Administator</span>
                 </div>
             </div>
@@ -112,9 +117,16 @@ const Sidebar = () => {
                     </li>
                 ))}
             </ul>
+            <form action={async ( ) => {
+                "use server";
+                await signOut();
+            }}>
+                
             <button className={styles.logout}>
                 <MdLogout />
-                Logout</button>
+                Logout
+            </button>
+            </form>
         </div>
     )
 }
